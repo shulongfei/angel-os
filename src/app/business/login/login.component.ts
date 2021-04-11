@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
-
-
 
 @Component({
   selector: 'os-login',
@@ -15,10 +10,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   validateForm!: FormGroup;
-
-  num: number = 2;
-  str: string = '';
-  arr: string[] = ['2',]; 
 
   constructor(
     private fb: FormBuilder,
@@ -34,15 +25,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  submitForm(): void {
-    
-  }
-
   onLogin() {
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    this.router.navigate(['/system'])
+
+    // 如果验证通过则跳转
+    if (this.validateForm.valid) {
+      localStorage.setItem('angular-token', 'xiexiaodiqweqweqweqweqweqwe');
+      this.router.navigate(['/home']);
+    }
+    
   }
+  
 }

@@ -1,18 +1,18 @@
-
 <div class="angel-login">
   <h2>登录</h2>
-  <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="onLogin()">
+  <form nz-form [formGroup]="validateForm" (ngSubmit)="onLogin()">
     <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your username!">
+      <nz-form-control nzErrorTip="请输入用户名">
         <nz-input-group>
-          <input type="text" nz-input formControlName="userName" placeholder="Username" />
+          <input type="text" nz-input formControlName="userName" placeholder="用户名" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
+
     <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-form-control nzErrorTip="请输入密码">
         <nz-input-group>
-          <input type="password" nz-input formControlName="password" placeholder="Password" />
+          <input type="password" nz-input formControlName="password" placeholder="密码" />
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
