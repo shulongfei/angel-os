@@ -11,6 +11,7 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { HomeComponent } from './home.component';
+// import { CeshiComponent } from './ceshi/ceshi.component';
 
 
 @NgModule({

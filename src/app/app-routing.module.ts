@@ -1,23 +1,34 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './shared/guard';
+import { PreloadI18nResolverService } from './shared/services/preload-i18n-resolver.service'
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   { 
     path: 'login', 
-    loadChildren: () => import('./business/login/login.module').then(m => m.LoginModule) 
+    loadChildren: () => 
+    import('./business/login/login.module').then(m => m.LoginModule),
+    resolve: { 
+      PreloadI18nResolverService
+    }
   },
   { 
     path: 'home', 
-    loadChildren: () => import('./business/home/home.module').then(m => m.HomeModule) ,
-    // canActivate: [AuthGuard],
+    loadChildren: () => import('./business/home/home.module').then(m => m.HomeModule),
+    resolve: { 
+      PreloadI18nResolverService
+    },
+    canActivate: [AuthGuard],
     canActivateChild: [AuthGuard]
   },
   { 
     path: 'system', 
     loadChildren: () => import('./business/system/system.module').then(m => m.SystemModule),
-    // canActivate: [AuthGuard],
+    resolve: { 
+      PreloadI18nResolverService
+    },
+    canActivate: [AuthGuard],
     canActivateChild: [AuthGuard] 
   }
 ];
