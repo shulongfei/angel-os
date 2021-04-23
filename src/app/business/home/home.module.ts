@@ -9,6 +9,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 
 import { HomeComponent } from './home.component';
 // import { CeshiComponent } from './ceshi/ceshi.component';
@@ -22,7 +23,8 @@ import { HomeComponent } from './home.component';
     NzIconModule,
     NzMenuModule, 
     NzLayoutModule,
-    NzButtonModule
+    NzButtonModule,
+    NzBreadCrumbModule
     
   ],
   declarations: [HomeComponent],
