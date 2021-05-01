@@ -10,14 +10,14 @@ const routes: Routes = [
     loadChildren: () => 
     import('./business/login/login.module').then(m => m.LoginModule),
     resolve: { 
-      PreloadI18nResolverService
+      reload: PreloadI18nResolverService
     }
   },
   { 
     path: 'home', 
     loadChildren: () => import('./business/home/home.module').then(m => m.HomeModule),
     resolve: { 
-      PreloadI18nResolverService
+      reload: PreloadI18nResolverService
     },
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard]
@@ -26,7 +26,7 @@ const routes: Routes = [
     path: 'system', 
     loadChildren: () => import('./business/system/system.module').then(m => m.SystemModule),
     resolve: { 
-      PreloadI18nResolverService
+      reload: PreloadI18nResolverService
     },
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard] 

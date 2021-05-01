@@ -25,6 +25,7 @@
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
+                        "allowedCommonJsDependencies": ["lodash"],
                         "aot": true,
                         "assets": [
                             "src/favicon.ico",

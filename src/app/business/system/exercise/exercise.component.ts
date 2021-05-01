@@ -7,9 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExerciseComponent implements OnInit {
 
-  array = [1, 2, 3, 4];
-  effect = 'scrollx';
-
   constructor() { }
 
   ngOnInit(): void {

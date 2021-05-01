@@ -76,6 +76,7 @@ export class I18NService {
    */
   load(resource) {
     if (typeof resource === 'string') {
+      console.log(22222);
       return this.http.get(resource).pipe(
         tap(r => {
           Object.assign(this.resource, r);

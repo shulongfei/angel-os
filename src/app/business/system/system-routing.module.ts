@@ -9,7 +9,10 @@ const routes: Routes = [
     path: '', 
     component: SystemComponent,
     children: [
-      { path: 'exercise', component: ExerciseComponent, } 
+      { 
+        path: 'exrecise', 
+        loadChildren: () => import('./exercise/exercise.module').then(m => m.ExerciseModule),
+      },
     ]
   },
   

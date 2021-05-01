@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SystemRoutingModule } from './system-routing.module';
-
-import { SystemComponent } from './system.component';
+// import { SystemRoutingModule } from './system-routing.module';
+// import { SystemComponent } from './system.component';
 
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzInputModule } from 'ng-zorro-antd/input';
@@ -12,12 +11,11 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 
-// import { ExerciseComponent } from './exercise/exercise.component';
+// import { ExerciseComponent } from './exercise.component';
 
 
 @NgModule({
   imports: [
-    SystemRoutingModule, 
     CommonModule,
     NzFormModule,
     NzInputModule,
@@ -26,8 +24,8 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
     NzLayoutModule,
     NzCarouselModule
   ],
-  declarations: [SystemComponent],
-  exports: [SystemComponent]
+  declarations: [],
+  exports: []
 })
 
-export class SystemModule { }
+export class ExerciseModule { }

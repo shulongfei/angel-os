@@ -33,6 +33,7 @@ export class AuthGuard implements CanActivateChild {
     state: RouterStateSnapshot
   ): AuthGuardType {
     const { canActivateChild = [] } = next.routeConfig;
+    console.log(33,canActivateChild.length, next.routeConfig);
     // 当组件路由未配置子路由权限配置，则进行父路由权限校验；否则，直接放行
     if (!canActivateChild.length) {
       return this.preCheckInterval(state);
@@ -45,6 +46,7 @@ export class AuthGuard implements CanActivateChild {
     state: RouterStateSnapshot
   ): AuthGuardType {
     const { component, children = [] } = childRoute.routeConfig;
+    console.log(22, children, !children.length);
     // 只有组件存在且不包含子组件，则进行子路由权限校验；否则，直接放行
     if (component && !children.length) {
       return this.preCheckInterval(state);
@@ -62,7 +64,7 @@ export class AuthGuard implements CanActivateChild {
       // 无授权数据，开启轮询跳转检查
       if (!this.authService.isAuth()) {
         /** repeat */
-        this.preCheckInterval(state, true);
+        // this.preCheckInterval(state, true);
         return of(false);
       }
       return this.preCheck();
@@ -97,10 +99,10 @@ export class AuthGuard implements CanActivateChild {
     // 检查角色
     const currentRole = this.authService.getRole();
     const currentAccountName = this.authService.getAccountName();
-    if (!currentRole || !currentAccountName) {
-      // requestObservers.push(this.getCurrentUserInfo());
-      console.log('');
-    }
+    // if (!currentRole || !currentAccountName) {
+    //   requestObservers.push(this.getCurrentUserInfo());
+    // }
+
     const mapOperation = requests => {
       return zipResult => {
         return zipResult.length === requests.length;
@@ -153,6 +155,7 @@ export class AuthGuard implements CanActivateChild {
     // if (accessStatus) {
     //   accessStatus = this.checkRoutePermission(url);
     // }
+
     return accessStatus;
   }
 
@@ -161,6 +164,7 @@ export class AuthGuard implements CanActivateChild {
     const isAuth = this.authService.isAuth();
     const isLogin = this.authService.shouldNavigationTo(url);
     if (!isAuth && !isLogin) {
+      // console.log(222);
       this.router.navigate(['/login']);
     }
     return isAuth;
