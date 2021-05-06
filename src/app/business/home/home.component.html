@@ -1,4 +1,48 @@
-<nz-layout class="layout">
+<div class="home-layout">
+  <div class="navigation">
+    <h2>Angle Os</h2>
+    <ul class="menu clear">
+      <li>首页</li>
+      <li>系统</li>
+      <li>资料</li>
+      <li>案例</li>
+      <li>联系</li>
+    </ul>
+    <div class="user-info">
+      admin
+    </div>
+  </div>
+  
+  <div class="home-content">
+    <div class="introduction-info">
+        <div class="product">
+          从源头到终端
+        </div>
+        <div class="product">
+          从品味到品质
+        </div>
+        <p class="wisdom">
+          因为年轻我们一无所有，也正因为年轻我们将拥有一切。
+        </p>
+        <button nz-button nzType="primary" (click)="onSystem($event)">
+          <!-- <i nz-icon nzType="download"></i> -->
+          立即开始
+        </button>
+     
+     
+    </div>
+    <div class="content-image">
+      <img src="/assets/images/home.png" />
+    </div>
+    <div class="remark">
+      鸣谢：本项目由谢狗蛋支持完成。
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <nz-layout class="layout">
 
   <nz-header class="clear">
     <div class="logo">
@@ -58,6 +102,25 @@
             </div>
           </div>
   
+      
+          <div nz-col [nzSpan]="8">
+            <nz-card nzTitle="学习教程">
+  
+              <nz-list nzItemLayout="horizontal">
+                <nz-list-item *ngFor="let item of data">
+                  <nz-list-item-meta
+                    nzDescription="Ant Design, a design language for background "
+                  >
+                    <nz-list-item-meta-title>
+                      <a href="https://ng.ant.design">{{ item }}</a>
+                    </nz-list-item-meta-title>
+                  </nz-list-item-meta>
+                </nz-list-item>
+              </nz-list>
+  
+            </nz-card>
+          </div>
+
           <div nz-col [nzSpan]="8">
             <nz-card nzTitle="项目排行榜">
               <div class="introduction">
@@ -133,24 +196,6 @@
             </nz-card>
           </div>
   
-          <div nz-col [nzSpan]="8">
-            <nz-card nzTitle="学习教程">
-  
-              <nz-list nzItemLayout="horizontal">
-                <nz-list-item *ngFor="let item of data">
-                  <nz-list-item-meta
-                    nzDescription="Ant Design, a design language for background "
-                  >
-                    <nz-list-item-meta-title>
-                      <a href="https://ng.ant.design">{{ item }}</a>
-                    </nz-list-item-meta-title>
-                  </nz-list-item-meta>
-                </nz-list-item>
-              </nz-list>
-  
-            </nz-card>
-          </div>
-  
         </div>
   
         <div nz-row [nzGutter]="15">
@@ -169,24 +214,6 @@
   
         </div>
       </div>
-      
-      
-
-    <!-- <div class="header"></div>
-      <section id="angel-home"> 
-        <div class="content inner-content">
-          <h1 class="title">Angel Os</h1>
-          <p>综合管理平台</p>
-          <hr>
-          <p>欢迎来到Angel Os综合管理系统～</p>
-          <ul>
-            <li> <span (click)="onSystem($event)">系统主页</span></li>
-            <li> <span>学习资源</span></li>
-            <li><span>技术支持</span></li>
-            <li> <span href="#">关于我</span></li>
-          </ul>
-        </div>
-      </section> -->
   </nz-content>
 </nz-layout>
-
+ -->
