@@ -9,6 +9,16 @@ const Languages = {
 @Component({
   selector: 'os-toggle-i18n',
   templateUrl: './toggle-i18n.component.html',
+  styles:[
+    ` nz-select {
+      width: 0.9rem;
+      text-align: center;
+    }
+    .langulage-button {
+      width: 0.76rem;
+      text-align: center;
+    }`
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
@@ -36,6 +46,12 @@ export class ToggleI18nComponent implements OnInit {
 
   getLanguage() {
     return this.i18n.language.toLowerCase();
+  }
+
+  OnToggleChange(value) {
+    this.i18n.changeLanguage(
+      this.getLanguage() === Languages.CN ? Languages.EN : Languages.CN
+    );
   }
 
 }

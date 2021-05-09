@@ -11,6 +11,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { ToggleI18nComponent } from './components/toggle-i18n/toggle-i18n.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { UploadComponent } from './components/upload/upload.component';
     NzFormModule,
     NzInputModule,
     NzIconModule,
-    NzButtonModule,    
+    NzButtonModule,
+    NzSelectModule  
 
   ],
   declarations: [

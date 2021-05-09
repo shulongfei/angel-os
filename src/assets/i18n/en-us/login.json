@@ -1,6 +1,11 @@
-
 {
-  "login_label": "Login",
-  "login_desc": "Welcome"
+    "login_label": "Login",
+    "login_welconme_desc": "Welcome",
+    "login_systemDesc_label": "Integrated Management Platform",
+    "login_userName_label": "Name",
+    "login_password_label": "Password",
+    "login_userNameTips_label": "Please input user name",
+    "login_passWordTips_label": "Please input user password",
+    "login_accountInput_label": "Any"
 
 }

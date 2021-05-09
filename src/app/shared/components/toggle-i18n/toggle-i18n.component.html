@@ -1,1 +1,6 @@
-<div (click)="toggleLanguage()">{{language}}</div>
+<button class="langulage-button" nz-button nzType="default" (click)="toggleLanguage()"> {{language}}</button>
+
+<!-- <nz-select ngModel="language" (ngModelChange)="OnToggleChange($event)">
+    <nz-option nzValue="language.CN" nzLabel="中文"></nz-option>
+    <nz-option nzValue="language.EN" nzLabel="English"></nz-option>
+</nz-select> -->

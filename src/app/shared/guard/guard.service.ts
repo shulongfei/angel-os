@@ -11,13 +11,13 @@ import {
 
 import { Observable, of, Subject, timer, zip } from 'rxjs';
 import { map, switchMap, takeUntil, tap } from 'rxjs/operators';
-
 import { AuthService } from '../services/auth.service';
 
 export declare type AuthGuardType =
   | Observable<boolean | UrlTree>
   | Promise<boolean | UrlTree>
   | boolean | UrlTree;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,6 +28,7 @@ export class AuthGuard implements CanActivateChild {
     private authService: AuthService,
     private activatedRoute: ActivatedRoute
   ) { }
+
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -46,7 +47,6 @@ export class AuthGuard implements CanActivateChild {
     state: RouterStateSnapshot
   ): AuthGuardType {
     const { component, children = [] } = childRoute.routeConfig;
-    console.log(22, children, !children.length);
     // 只有组件存在且不包含子组件，则进行子路由权限校验；否则，直接放行
     if (component && !children.length) {
       return this.preCheckInterval(state);
@@ -180,7 +180,6 @@ export class AuthGuard implements CanActivateChild {
     }
     return !isLogin;
   }
-
 
   // 检查路由访问权限
   // private checkRoutePermission(url: string) {

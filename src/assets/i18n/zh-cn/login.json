@@ -1,6 +1,12 @@
-
 {
-  "login_label": "登录",
-  "login_desc": "欢迎使用"
+    "login_label": "登录",
+    "login_welconme_desc": "欢迎使用~",
+    "login_systemDesc_label": "综合管理平台",
+    "login_userName_label": "用户名",
+    "login_password_label": "密码",
+    "login_userNameTips_label": "请输入用户名",
+    "login_passWordTips_label": "请输入密码",
+    "login_accountInput_label": "随便输"
+
 
 }

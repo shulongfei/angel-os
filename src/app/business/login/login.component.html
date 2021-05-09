@@ -1,32 +1,42 @@
+<div class="login-operation clear">
+    <div class="logo">Angle Os</div>
+    <div class=" international">
+        <os-toggle-i18n></os-toggle-i18n>
+    </div>
+</div>
 <div class="angel-login">
-  <h2>登录</h2>
-  <form nz-form [formGroup]="validateForm" (ngSubmit)="onLogin()">
-    <nz-form-item>
-      <nz-form-control nzErrorTip="请输入用户名">
-        <nz-input-group>
-          <input type="text" nz-input formControlName="userName" placeholder="用户名" />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
+    <div class="login-introduce">{{i18n.get('login_systemDesc_label')}}</div>
+    <h2>{{i18n.get('login_welconme_desc')}}</h2>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="onLogin()">
+        <nz-form-item>
+            <nz-form-control [nzErrorTip]="i18n.get('login_userNameTips_label')">
+                <nz-input-group>
+                    <input type="text" nz-input formControlName="userName" [placeholder]="i18n.get('login_userName_label')" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
 
-    <nz-form-item>
-      <nz-form-control nzErrorTip="请输入密码">
-        <nz-input-group>
-          <input type="password" nz-input formControlName="password" placeholder="密码" />
-        </nz-input-group>
-      </nz-form-control>
-    </nz-form-item>
-   
-    <button 
-      nz-button 
-      class="login-form-button login-form-margin" 
-      [nzType]="'primary'"
-    >
-      登录
-    </button>
-  </form>
-  <div>用户名：随便输</div>
-  <div>{{i18n.get('login_desc')}}</div>
-  <!-- <os-toggle-i18n></os-toggle-i18n> -->
-  
+        <nz-form-item>
+            <nz-form-control [nzErrorTip]="i18n.get('login_passWordTips_label')">
+                <nz-input-group>
+                    <input type="password" nz-input formControlName="password" [placeholder]="i18n.get('login_password_label')" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+
+        <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">
+            {{i18n.get('login_label')}}
+        </button>
+    </form>
+    <br>
+    <ul class="login-tips">
+        <li>
+            <span>{{i18n.get('login_userName_label')}}:</span>
+            <span>{{i18n.get('login_accountInput_label')}}</span>
+        </li>
+        <li>
+            <span>{{i18n.get('login_password_label')}}:</span>
+            <span>{{i18n.get('login_accountInput_label')}}</span>
+        </li>
+    </ul>
 </div>
