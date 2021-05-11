@@ -1,0 +1,116 @@
+.layout {
+  nz-header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: hsla(0,0%,100%,.1);
+    backdrop-filter: blur(8px);
+    transition: background .3s;
+    border-bottom: 1px solid rgba(61,61,61,.15);
+    .logo {
+      font-size: 0.2rem;
+      float: left;
+      cursor: pointer;
+    }
+    .nav-menu {
+      float: right;
+      li {
+        float: left;
+        width: 0.8rem;
+        font-size: 0.14rem;
+        text-align: center;
+      }
+      li:hover {
+        color: #ff6a00;
+        transition: background .3s;
+        cursor: pointer;
+      }
+    }
+  }
+  nz-content {
+    margin-top: 0.64rem;
+   
+  }
+}
+
+.home-main {
+  height: 2.8rem;
+  background: url(/assets/images/bg-home.gif) no-repeat;
+  background-size: 100% 100%;
+  margin-bottom: 0.15rem;
+  .main-info {
+    padding: 0.5rem 0.5rem;
+    p {
+      margin-bottom: 0.15rem;
+    }
+    p:first-child {
+      font-size: 0.18rem;
+    }
+  }
+}
+
+.home-section {
+  padding: 0.15rem;
+}
+
+[nz-carousel-content] {
+  text-align: center;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 0.04rem;
+  background: rgb(201, 186, 131);
+  color: #fff;
+  overflow: hidden;
+  h3 {
+    color: #fff;
+  }
+}
+
+.home-icarousel {
+  margin-bottom: 0.15rem;
+}
+
+.home-info-update {
+  height: 2.05rem;
+  padding: 0.15rem;
+  background-color: #fff;
+}
+
+.home-notice {
+  margin-bottom: 0.15rem;
+  nz-card {
+    height: 4.2rem;
+    border-radius: 0.04rem;
+  }
+  .introduction {
+    height: 0.7rem;
+    border-radius: 0.05rem;
+    padding-bottom: 0.05rem;
+    margin-bottom: 0.1rem;
+    display: flex;
+    justify-content: start;
+    .introduction-icon {
+      width: 0.7rem;
+      height: 100%;
+      border-right: 0.01rem solid #ffe119;
+    }
+  }
+}
+
+.introduction-info {
+  padding: 0 0.1rem;
+  width: calc(100% - 0.7rem);
+  li:last-child {
+    .process-value {
+      float: left;
+    }
+    .process-link {
+      float: right;
+    }
+  }
+  .project-name {
+    font-size: 0.16rem;
+  }
+}
