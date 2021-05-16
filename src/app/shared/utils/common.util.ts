@@ -13,7 +13,6 @@ export function deserialize(val: string, defaultVal: string = '') {
   return parseVal !== undefined ? parseVal : defaultVal;
 }
 
-
 export function serialize(obj: any): string {
   if (_isString(obj)) {
     return obj;

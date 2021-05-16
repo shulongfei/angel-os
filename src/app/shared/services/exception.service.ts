@@ -4,6 +4,7 @@ import { from, TimeoutError } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { I18NService } from '../services/i18n.service';
 import { assign as _assign } from 'lodash';
+import { HttpStatusCodes } from '../consts/common.const'
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,6 @@ export class ExceptionService {
    * 补充httpStatus === 200，存在异常的场景
    * TODO: 根据实际场景判断异常情况
    */
-
    isException(res: HttpResponse<any>) {
     const code = (res.body && res.body.code) || '0';
     return code !== '0';
@@ -31,7 +31,6 @@ export class ExceptionService {
    * 2. status !== 2XX 请求异常
    * 3. 请求超时
    */
-
   doException(error) {
     let errorType: string;
     if (error instanceof HttpErrorResponse) {
@@ -48,13 +47,11 @@ export class ExceptionService {
       this.unknownException(error);
     }
 
-
     // 开发模式时，提示具体错误信息
     if (isDevMode) {
       console.error(`Uncaught ${errorType}:`, error);
     }
   }
-
 
   /**
    * http error statusCode !== 2XX
@@ -64,7 +61,6 @@ export class ExceptionService {
    *  403 跳转到403无权限页面
    *  404 400...其他 错误提示
    * 5XX 系统异常
-
    */
   httpException(errorResponse) {
     const { status } = errorResponse;
@@ -72,7 +68,6 @@ export class ExceptionService {
     if (/^5+/.test(status + '')) {
       return this.serviceErrorException(errorResponse);
     }
-
 
     // 4XX
     switch (status) {
@@ -87,7 +82,6 @@ export class ExceptionService {
         break;
     }
   }
-
 
   // timeout error
   timeoutException(error) {
@@ -112,12 +106,10 @@ export class ExceptionService {
     this.unknownException(errorResponse);
   }
 
-
   // 401
   noAuthErrorException(errorResponse) {
     if (this.timer) {
       return;
-
     }
     this.timer = window.setTimeout(() => {
       // this.storageErrorInfo(errorResponse);
@@ -126,7 +118,6 @@ export class ExceptionService {
       this.timer = null;
     }, 2e3);
   }
-
 
   // 暂存错误消息
   storageErrorInfo(errorResponse) {

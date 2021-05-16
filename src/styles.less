@@ -1,3 +1,6 @@
+@color-primary-dark: #000;
+@text-color-tertiary:#000;
+
 * {
   box-sizing: border-box;
 }
@@ -52,3 +55,24 @@ a:hover {
   // color: #000;
   text-decoration: none;
 }
+
+// 链接
+
+.aui-link,
+a {
+  color: @color-primary-dark;
+  text-decoration: none;
+  &:hover,
+  &:active {
+    color: @color-primary-dark;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  &:disabled,
+  &[disabled] {
+    color: @text-color-tertiary;
+    text-decoration: none;
+    cursor: not-allowed;
+  }
+}
+

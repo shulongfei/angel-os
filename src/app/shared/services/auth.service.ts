@@ -4,6 +4,10 @@ import {
 } from 'lodash';
 
 import { from, Observable, Subject } from 'rxjs';
+import { CookieService } from '../services/cookie.service';
+import { SessionService } from '../services/session.service';
+import { LocalService } from '../services/local.service';
+import { I18NService } from '../services/i18n.service'
 
 export const enum StorageKey {
   ErrorInfo = '__error_info__',
@@ -25,13 +29,22 @@ export const enum StorageKey {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+
+  constructor(
+    public i18n: I18NService,
+    private cookie: CookieService,
+    private sessionService: SessionService,
+    private localService: LocalService
+  ) {
+
+  }
   
   setToken(xAuthToken: any) {
-    localStorage.setItem(StorageKey.AuthToken, xAuthToken);
+    this.cookie.set(StorageKey.AuthToken, xAuthToken);
   }
 
   getToken() {
-    return localStorage.getItem(StorageKey.AuthToken);
+    return this.cookie.get(StorageKey.AuthToken);
   }
 
   isHttps() {
@@ -40,36 +53,36 @@ export class AuthService {
   }
 
   removeToken(): any {
-    localStorage.removeItem(StorageKey.CurrentRole);
+    this.localService.remove(StorageKey.CurrentRole);
   }
 
   setRole(role: any) {
-    localStorage.setItem(StorageKey.CurrentRole, role);
+    this.localService.set(StorageKey.CurrentRole, role);
   }
 
   getRole() {
-    return localStorage.getItem(StorageKey.CurrentRole);
+    return this.localService.get(StorageKey.CurrentRole);
   }
 
   // 设置账户信息
   setAccountName(accountName: string) {
-    localStorage.setItem(StorageKey.AccountName, accountName);
+    this.localService.set(StorageKey.AccountName, accountName);
   }
 
   // 获取账户信息
   getAccountName() {
-    return localStorage.getItem(StorageKey.AccountName);
+    return this.localService.get(StorageKey.AccountName);
   }
 
   // 获取超时时间
   getTimeout() {
-    const timeout = localStorage.getItem(StorageKey.Timeout);
+    const timeout = this.localService.get(StorageKey.Timeout);
     return timeout || 10;
   }
 
   // 设置超时时间
   setTimeout(timeout: string) {
-    localStorage.setItem(StorageKey.Timeout, timeout);
+    this.localService.set(StorageKey.Timeout, timeout);
   }
 
   // 设置时间戳
@@ -77,29 +90,29 @@ export class AuthService {
     if (!value) {
       value = Date.now();
     }
-    localStorage.set(StorageKey.TimeSpan, value);
+    this.localService.set(StorageKey.TimeSpan, value);
   }
 
-  // getTimespan() {
-  //   let timespan = localStorage.getItem(StorageKey.TimeSpan);
-  //   if (!timespan) {
-  //     timespan = Date.now();
-  //     this.setTimespan(timespan);
-  //   }
-  //   return timespan;
-  // }
+  getTimespan() {
+    let timespan = this.localService.get(StorageKey.TimeSpan);
+    if (!timespan) {
+      timespan = Date.now();
+      this.setTimespan(timespan);
+    }
+    return timespan;
+  }
 
-  // logout() {
-  //   const excludeCookieKeys = ['livelanguage', StorageKey.ErrorInfo];
-  //   this.cookieService.clear(excludeCookieKeys);
-  //   this.localStorageService.clear(excludeCookieKeys);
-  // }
+  logout() {
+    const excludeCookieKeys = ['language', StorageKey.ErrorInfo];
+    this.cookie.clear(excludeCookieKeys);
+    this.localService.clear(excludeCookieKeys);
+  }
 
   // 导航到登出页面
   redirectToLogout(errorCode: string = '') {
     const logoutTips = (title: string = '') => {
-      // const content = this.i18n.get('common_logout_tips');
-      // this.messageService.info(content, { lvTitle: title, lvDuration: 1e3 });
+      const content = this.i18n.get('common_logout_tips');
+      // this.messageService.info(content, { title: title, lvDuration: 1e3 });
     };
 
     // const logoutOperation = () => {

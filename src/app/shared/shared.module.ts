@@ -1,5 +1,5 @@
 
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import {  } from '@angular/forms';
@@ -12,6 +12,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { ToggleI18nComponent } from './components/toggle-i18n/toggle-i18n.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { HttpInterceptorProviders } from './httpInterceptors';
 
 
 @NgModule({
@@ -24,7 +25,6 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     NzIconModule,
     NzButtonModule,
     NzSelectModule  
-
   ],
   declarations: [
     ToggleI18nComponent,
@@ -36,4 +36,31 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
   ],
   providers: []
 })
-export class BasicModule { }
+
+export class SharedModule { 
+  constructor(@Optional() @SkipSelf() parentModule: SharedModule) {
+    if (parentModule) {
+      throw new Error(
+        'SharedModule is already loaded. Import it in the AppModule only'
+      );
+    }
+  }
+
+  // static forRoot(): ModuleWithProviders {
+  //   return {
+  //     ngModule: SharedModule,
+  //     providers: [
+  //       // DatePipe,
+  //       HttpInterceptorProviders,
+  //       {
+  //         provide: APP_INITIALIZER,
+  //         // useFactory: SharedConfig.config,
+  //         // deps: [I18NService],
+  //         multi: true
+  //       }
+  //     ]
+  //   };
+  // }
+
+
+}

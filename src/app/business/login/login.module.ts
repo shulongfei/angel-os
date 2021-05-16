@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
-import { BasicModule } from '../../shared/basic.module';
+import { SharedModule } from '../../shared/shared.module';
 import { LoginComponent } from './login.component';
 import { LoginRoutingModule } from './login-routing.module';
 
@@ -20,7 +20,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     LoginRoutingModule,
     ReactiveFormsModule,
     CommonModule,
-    BasicModule,
+    SharedModule,
     FormsModule,
     NzFormModule,
     NzInputModule,
