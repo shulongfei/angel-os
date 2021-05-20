@@ -13,6 +13,8 @@ import { ToggleI18nComponent } from './components/toggle-i18n/toggle-i18n.compon
 import { UploadComponent } from './components/upload/upload.component';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { HttpInterceptorProviders } from './httpInterceptors';
+import { SharedConfig } from './config/shared.config';
+import { I18NService } from './services/i18n.service';
 
 
 @NgModule({
@@ -46,21 +48,21 @@ export class SharedModule {
     }
   }
 
-  // static forRoot(): ModuleWithProviders {
-  //   return {
-  //     ngModule: SharedModule,
-  //     providers: [
-  //       // DatePipe,
-  //       HttpInterceptorProviders,
-  //       {
-  //         provide: APP_INITIALIZER,
-  //         // useFactory: SharedConfig.config,
-  //         // deps: [I18NService],
-  //         multi: true
-  //       }
-  //     ]
-  //   };
-  // }
+  static forRoot(): ModuleWithProviders<NgModule> {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        // DatePipe,
+        HttpInterceptorProviders,
+        {
+          provide: APP_INITIALIZER,
+          useFactory: SharedConfig.config,
+          deps: [I18NService],
+          multi: true
+        }
+      ]
+    };
+  }
 
 
 }
