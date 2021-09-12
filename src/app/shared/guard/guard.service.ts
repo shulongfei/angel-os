@@ -34,7 +34,6 @@ export class AuthGuard implements CanActivateChild {
     state: RouterStateSnapshot
   ): AuthGuardType {
     const { canActivateChild = [] } = next.routeConfig;
-    console.log(33,canActivateChild.length, next.routeConfig);
     // 当组件路由未配置子路由权限配置，则进行父路由权限校验；否则，直接放行
     if (!canActivateChild.length) {
       return this.preCheckInterval(state);
@@ -164,7 +163,6 @@ export class AuthGuard implements CanActivateChild {
     const isAuth = this.authService.isAuth();
     const isLogin = this.authService.shouldNavigationTo(url);
     if (!isAuth && !isLogin) {
-      // console.log(222);
       this.router.navigate(['/login']);
     }
     return isAuth;
@@ -174,7 +172,6 @@ export class AuthGuard implements CanActivateChild {
   private checkLoginPath(url: string) {
     const isLogin = this.authService.shouldNavigationTo(url);
     if (isLogin) {
-      console.log(this.activatedRoute.snapshot);
       const { queryParams } = this.activatedRoute.snapshot;
       this.router.navigate(['/home']);
     }

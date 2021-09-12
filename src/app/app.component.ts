@@ -20,17 +20,15 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.onScreenEvent();
-    this.onSessionInterval();
+    // this.onScreenEvent();
+    // this.onSessionInterval();
   }
-
-
 
   // 检测屏幕鼠标事件
   onScreenEvent() {
  
     const screenEventOk = _value => {
-      console.log('检测');
+      // console.log('检测');
       // 将分钟转换为毫秒
       const timeout = this.authService.getTimeout() * 6e4;
       const cacheTimespan = this.authService.getTimespan();
@@ -51,16 +49,11 @@ export class AppComponent implements OnInit {
     .subscribe(screenEventOk);
   }
 
-  private _destroy$(_destroy$: any): import("rxjs").OperatorFunction<Event, Event> {
-    throw new Error('Method not implemented.');
-  }
-
-
   // 绑定Session过期心跳检测事件
   onSessionInterval(gapTime: number = 5 * 1e3) {
     const sessionIntervalOk = _value => {
 
-      console.log(2222, this.operationGapTime);
+      // console.log(2222, this.operationGapTime);
       // 将分钟转换为毫秒
       const timeout = 5000;
       this.operationGapTime += gapTime;

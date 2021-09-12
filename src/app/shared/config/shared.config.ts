@@ -1,7 +1,7 @@
 import { from, zip } from "rxjs";
 import { I18NService } from "../services";
 import { getI18nResource, I18N_CONFIG } from "../services/preload-i18n-resolver.service";
-import { ICONS_CONFIG } from "./icons-config.config"
+import { ICONS_CONFIG } from "./icons.config"
 
 export class SharedConfig {
   // 配置入口
@@ -57,5 +57,4 @@ export class SharedConfig {
     // LvConfig.tooltipOptions = {
     //   lvTheme: 'light'
     };
-
   }

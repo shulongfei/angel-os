@@ -11,5 +11,4 @@ export const ICONS_CONFIG = `
         </g>
     </symbol>
 </svg>
-
 `;

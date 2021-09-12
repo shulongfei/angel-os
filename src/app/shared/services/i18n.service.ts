@@ -35,7 +35,6 @@ export class I18NService {
     this.initLanguage();
   }
 
-
   /**
    * 语言初始化
    * 优先级: 1.cookie 2.浏览器语言 3.默认zh-cn
@@ -54,7 +53,6 @@ export class I18NService {
    * 切换语言, 会重新加载页面
    * @param language 语言
    */
-
   changeLanguage(language) {
     this.language = language;
     this.cookie.set(this.languageKey, this.language);
@@ -76,7 +74,6 @@ export class I18NService {
    */
   load(resource) {
     if (typeof resource === 'string') {
-      console.log(22222);
       return this.http.get(resource).pipe(
         tap(r => {
           Object.assign(this.resource, r);

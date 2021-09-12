@@ -20,8 +20,11 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserManageComponent } from './user-manage/user-manage.component';
 
 
 @NgModule({
@@ -43,11 +46,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     NzEmptyModule,
     NzBadgeModule,
     NzAvatarModule,
-    NzDropDownModule
+    NzDropDownModule,
+    NzTableModule,
+    NzDrawerModule
+    
   ],
   declarations: [
     SystemComponent, 
-    DashboardComponent,
+    DashboardComponent, UserManageComponent,
   ],
   exports: [SystemComponent]
 })

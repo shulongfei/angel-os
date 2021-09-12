@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { 
-  some as _some 
+import {
+  some as _some
 } from 'lodash';
 
 import { from, Observable, Subject } from 'rxjs';
@@ -8,6 +8,7 @@ import { CookieService } from '../services/cookie.service';
 import { SessionService } from '../services/session.service';
 import { LocalService } from '../services/local.service';
 import { I18NService } from '../services/i18n.service'
+import { Router } from '@angular/router';
 
 export const enum StorageKey {
   ErrorInfo = '__error_info__',
@@ -34,11 +35,10 @@ export class AuthService {
     public i18n: I18NService,
     private cookie: CookieService,
     private sessionService: SessionService,
-    private localService: LocalService
-  ) {
+    private localService: LocalService,
+    private router: Router
+  ) { }
 
-  }
-  
   setToken(xAuthToken: any) {
     this.cookie.set(StorageKey.AuthToken, xAuthToken);
   }
@@ -114,6 +114,8 @@ export class AuthService {
       const content = this.i18n.get('common_logout_tips');
       // this.messageService.info(content, { title: title, lvDuration: 1e3 });
     };
+    this.router.navigate(['/login']);
+    this.logout();
 
     // const logoutOperation = () => {
     //   this.router.navigate(['/login']);

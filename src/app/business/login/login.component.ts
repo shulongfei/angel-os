@@ -39,10 +39,11 @@ export class LoginComponent implements OnInit {
     }
     // 如果验证通过则跳转
     if (this.validateForm.valid) {
+      console.log(111);
       this.authService.setToken('daffaewrwqerqezczdfasdfadfa');
       this.authService.setRole('admin');
       this.authService.setAccountName('xiaoxie');
-      this.authService.setTimeout('30');
+      this.authService.setTimeout('30000000');
       this.router.navigate(['/home']);
     }
   }

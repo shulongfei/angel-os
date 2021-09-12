@@ -1,58 +1,32 @@
 export enum Roles {
-
   SYS_ADMIN = 'SYS_ADMIN'
-
 }
-
 
 type PermissionConfigType = {
-
   [key in Roles]: PermissionConfigItem;
-
 };
 
-
 interface PermissionConfigItem {
-
   action: string[];
-
   accessUrls: any;
-
 }
 
-
 export const enum StorageKey {
-
   ErrorInfo = '__error_info__',
-
   PasswordStrategy = '__password_strategy__',
-
   AccountStrategy = '__account_strategy__',
-
   CurrentRole = '__current_role__',
-
   AccountName = '__account_name__',
-
   IsExpire = '__is_expire__',
-
   Timeout = '__timeout__',
-
   TimeSpan = '__timespan__',
-
   InitialStatus = '__initial_status__',
-
   SiteInfo = '__site_info__',
-
   FrontTaskQueen = '__front_task_queen__',
-
   AuthToken = 'X-Auth-Token',
-
   VncAuthToken = '__X_AUTH_TOKEN__',
-
   InitData = '__init_data__',
-
   IpManagement = '__ip_management__'
-
 }
 
 

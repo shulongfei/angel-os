@@ -5,7 +5,6 @@ import {  filter, map } from 'rxjs/operators'
 interface Store {
   action: string;
   state: any;
-  
 }
 @Injectable({
   providedIn: 'root'
@@ -23,12 +22,10 @@ export class StoreService {
     this.store$.next(source);
   }
 
-
   // 订阅，所有流
   onStore() {
     return this.store$.asObservable();
   }
-
 
   // 订阅，具体流
   getState(action) {
@@ -44,15 +41,12 @@ export class StoreService {
     }
   }
 
-
   // 有初始值
-
   // 发布
   emitBehaviorStore({ action, state }: Store) {
     this.initBehavior(action);
     this.behaviorStoreMap$[action].next(state);
   }
-
 
   // 订阅，具体流
   getBehaviorState(action) {
