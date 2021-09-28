@@ -10,23 +10,23 @@ const routes: Routes = [
     loadChildren: () => 
     import('./business/login/login.module').then(m => m.LoginModule),
     resolve: { 
-      reload: PreloadI18nResolverService
+      preload: PreloadI18nResolverService
     }
   },
   { 
     path: 'home', 
     loadChildren: () => import('./business/home/home.module').then(m => m.HomeModule),
-    resolve: { 
-      reload: PreloadI18nResolverService
+    resolve: {
+      preload: PreloadI18nResolverService
     },
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard]
   },
-  { 
+  {
     path: 'system', 
     loadChildren: () => import('./business/system/system.module').then(m => m.SystemModule),
     resolve: { 
-      reload: PreloadI18nResolverService
+      preload: PreloadI18nResolverService
     },
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard] 
@@ -46,7 +46,7 @@ const routerExtraOptions: ExtraOptions = {
 };
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routerExtraOptions)],
   exports: [RouterModule]
 })
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { fromEvent, timer } from 'rxjs';
+import { fromEvent, Subject, timer } from 'rxjs';
 import { filter, takeUntil, throttleTime } from 'rxjs/operators';
 import { AuthService } from './shared/services'
 
@@ -10,9 +10,11 @@ import { AuthService } from './shared/services'
 })
 
 export class AppComponent implements OnInit {
+
   isCollapsed = false;
-  operationGapTime: number;
- 
+  operationGapTime: number = 0;
+  private _destroy$ = new Subject;
+
 
   constructor(
     private router: Router,
@@ -20,15 +22,14 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.onScreenEvent();
-    // this.onSessionInterval();
+    this.onScreenEvent();
+    this.onSessionInterval();
   }
 
   // 检测屏幕鼠标事件
   onScreenEvent() {
- 
+
     const screenEventOk = _value => {
-      // console.log('检测');
       // 将分钟转换为毫秒
       const timeout = this.authService.getTimeout() * 6e4;
       const cacheTimespan = this.authService.getTimespan();
@@ -43,19 +44,17 @@ export class AppComponent implements OnInit {
     };
 
     fromEvent(document, 'mousemove')
-      .pipe(throttleTime(1e4), 
-      // takeUntil(this._destroy$)
-    )
-    .subscribe(screenEventOk);
+      .pipe(throttleTime(1e4),
+        takeUntil(this._destroy$)
+      )
+      .subscribe(screenEventOk);
   }
 
   // 绑定Session过期心跳检测事件
   onSessionInterval(gapTime: number = 5 * 1e3) {
     const sessionIntervalOk = _value => {
-
-      // console.log(2222, this.operationGapTime);
       // 将分钟转换为毫秒
-      const timeout = 5000;
+      const timeout = 100000;
       this.operationGapTime += gapTime;
 
       // 事件的时间戳间隔大于Session过期时间，则跳转到授权页面；否则，清空心跳计数
@@ -83,7 +82,7 @@ export class AppComponent implements OnInit {
     timer(0, gapTime)
       .pipe(
         filter(filterOperation),
-        // takeUntil(this._destroy$)
+        takeUntil(this._destroy$)
       )
       .subscribe(sessionIntervalOk);
   }
